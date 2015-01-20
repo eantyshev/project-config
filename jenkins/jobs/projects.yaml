@@ -1,14 +1,5 @@
-# The projects in this file are grouped into sections and sorted
-# alphabetical in each section.
-
 - project:
-    name: nova
-    node: 'bare-precise || bare-trusty'
-    tarball-site: tarballs.openstack.org
-    doc-publisher-site: docs.openstack.org
-
+    name: sandbox
+    github-org: openstack-dev
     jobs:
-      - 'gate-{name}-tox-{envlist}':
-          envlist: functional
-
-
+        - noop-check-communication
