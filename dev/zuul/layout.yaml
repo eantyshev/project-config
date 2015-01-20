@@ -125,7 +125,7 @@ jobs:
 projects:
   - name: openstack-dev/sandbox
     check:
-      - noop
+      - noop-check-communication
       - check-parallels-tempest-dsvm-full
     gate:
       - noop
@@ -142,6 +142,3 @@ projects:
     experimental:
       - noop
 
-  - name: gtest-org/gtest2
-    periodic:
-      - noop

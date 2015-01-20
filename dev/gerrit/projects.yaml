@@ -1,8 +1,5 @@
-- project: gtest-org/gtest
-- project: completely-bogus-org/test
-- project: gtest-org/test
-- project: gtest-org/test2
-- project: gtest-org/test3
-- project: gtest-org/test-manage-project
-  acl-config: /home/gerrit2/acls/test-manage-project.config
-- project: gtest-org/test.hyphen
+- project:
+    name: sandbox
+    github-org: openstack-dev
+    jobs:
+        - noop-check-communication
