@@ -123,9 +123,10 @@ jobs:
     voting: false
 
 projects:
-  - name: gtest-org/gtest
+  - name: openstack-dev/sandbox
     check:
       - noop
+      - check-parallels-tempest-dsvm-full
     gate:
       - noop
     post:
