@@ -1,6 +1,6 @@
-- job-template:
+- job:
     name: 'check-precise-dsvm'
-    node: '{node}'
+    node: 'devstack-precise'
 
     wrappers:
       - build-timeout:
