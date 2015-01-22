@@ -2,6 +2,6 @@
     name: 'noop-check-communication'
     builders:
         - shell: |
-        #!/bin/bash -xe
-        echo "Hello world, this is the {vendor} Testing System"
+            #!/bin/bash -xe
+            echo "Hello world, this is the {vendor} Testing System"
 
