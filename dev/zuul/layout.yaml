@@ -126,7 +126,7 @@ projects:
   - name: openstack-dev/sandbox
     check:
       - noop-check-communication
-      - check-parallels-dsvm
+      - check-precise-dsvm
     gate:
       - noop
     post:

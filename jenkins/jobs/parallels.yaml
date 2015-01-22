@@ -1,5 +1,5 @@
 - job-template:
-    name: 'check-parallels-dsvm'
+    name: 'check-precise-dsvm'
     node: '{node}'
 
     wrappers:
