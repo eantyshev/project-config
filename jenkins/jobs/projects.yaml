@@ -4,3 +4,4 @@
     vendor: Prl CI
     jobs:
         - noop-check-communication
+        - check-precise-dsvm
