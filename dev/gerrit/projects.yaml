@@ -3,3 +3,4 @@
     github-org: openstack-dev
     jobs:
         - noop-check-communication
+        - check-parallels-dsvm

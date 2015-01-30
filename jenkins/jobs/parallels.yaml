@@ -1,10 +1,10 @@
 - job:
-    name: 'check-precise-dsvm'
-    node: 'devstack-precise'
+    name: 'check-parallels-dsvm'
+    node: 'devstack-pcs6'
 
     wrappers:
       - build-timeout:
-          timeout: 125
+          timeout: 1200
       - timestamps
 
     builders:
