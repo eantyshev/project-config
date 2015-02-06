@@ -1,6 +1,5 @@
 #!/bin/bash -xe
-
-# Copyright (C) 2011-2014 OpenStack Foundation
+# Copyright (C) 2015 Rackspace Australia
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +11,9 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 # implied.
-#
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
-HOSTNAME=$1
-
-export SUDO='false'
-export THIN='false'
-export PYTHON3='true'
-export PYPY='true'
-export ALL_MYSQL_PRIVS='true'
-
-./prepare_node.sh "$HOSTNAME"
-./fix_pip.sh
-./restrict_memory.sh
+# Create a virtualenv for zuul-swift-logs
+# This is in /usr instead of /usr/local due to this bug on precise:
+# https://bugs.launchpad.net/ubuntu/+source/python2.7/+bug/839588
+sudo -H virtualenv /usr/zuul-swift-logs-env
+sudo -H /usr/zuul-swift-logs-env/bin/pip install python-magic argparse requests

@@ -15,10 +15,10 @@
     name: revoke-sudo
     builders:
       - shell: |
-          #!/bin/bash
-          if [ -f /etc/sudoers.d/jenkins-sudo ] ; then
-              sudo rm /etc/sudoers.d/jenkins-sudo
-          fi
+          #!/bin/bash -x
+          sudo rm -f /etc/sudoers.d/jenkins-sudo
+          # Prove that general sudo access is actually revoked
+          ! sudo -n true
 
 - builder:
     name: coverage
@@ -95,6 +95,13 @@
       - shell: |
           sudo apt-get update
           sudo apt-get install -y firefox
+
+- builder:
+    name: chrome-install
+    builders:
+      - shell: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
 
 - builder:
     name: uninstall-puppet
@@ -200,6 +207,7 @@
           sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 10
           sudo update-alternatives --set gem /usr/bin/gem1.9.1
           sudo gem install bundler --no-rdoc --no-ri --verbose
+          sudo gem install rake    --no-rdoc --no-ri --verbose
 
 - builder:
     name: chef-bundler-prep
@@ -216,6 +224,22 @@
           else
             bundle install --path=.bundle --jobs 1 --retry 3 --verbose
           fi
+
+- builder:
+    name: install-chefdk
+    builders:
+      - shell: |
+          #!/bin/bash -x
+          chefdk=chefdk_0.4.0-1_amd64.deb
+          wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/$chefdk
+          sudo dpkg -i $chefdk
+
+- builder:
+    name: chef-rake-test
+    builders:
+      - shell: |
+          #!/bin/bash -x
+          chef exec rake
 
 - builder:
     name: chef-berkshelf-prep
@@ -391,6 +415,25 @@
           ip neighbor show
 
 - builder:
+    name: static-publish-prep
+
+    # We want to publish to the docroot but the scp publisher cannot remove
+    # paths, so use a shell builder to move the content in the right place and
+    # publish from there.
+    builders:
+      - shell: |
+          #!/bin/bash -xe
+          rm -rf ,content
+          mv {source} ,content
+          rm -rf .[^.]* [^,]*
+          # Disable errexit here because there might not be any dotfiles.
+          set +e
+          mv ,content/.[^.]* ./
+          set -e
+          mv ,content/* ./
+          rm -r ,content
+
+- builder:
     name: install-buck
     builders:
       - shell: |
@@ -406,7 +449,7 @@
 - builder:
     name: zuul-swift-upload
     builders:
-      - shell: "/usr/local/jenkins/slave_scripts/zuul_swift_upload.py --name {zuul_log_instruction_set} {upload_source}"
+      - shell: "/usr/zuul-swift-logs-env/bin/python /usr/local/jenkins/slave_scripts/zuul_swift_upload.py --name {zuul_log_instruction_set} {upload_source}"
 
 
 - builder:
@@ -645,3 +688,9 @@
           # should run on every job regardless of status.
           onfailure: False
           onsuccess: False
+
+- publisher:
+    name: zuul-swift-devstack-logs
+    publishers:
+      - zuul-swift-upload-logs:
+          upload_source: 'logs'

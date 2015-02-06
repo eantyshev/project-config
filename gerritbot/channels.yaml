@@ -32,15 +32,62 @@ openstack-infra:
       - openstack-infra/os-loganalyze
       - openstack-infra/project-config
       - openstack-infra/publications
+      - openstack-infra/puppet-accessbot
+      - openstack-infra/puppet-ansible
       - openstack-infra/puppet-apparmor
+      - openstack-infra/puppet-askbot
+      - openstack-infra/puppet-asterisk
+      - openstack-infra/puppet-bugdaystats
+      - openstack-infra/puppet-bup
+      - openstack-infra/puppet-cgit
       - openstack-infra/puppet-dashboard
+      - openstack-infra/puppet-drupal
+      - openstack-infra/puppet-elastic_recheck
       - openstack-infra/puppet-elasticsearch
+      - openstack-infra/puppet-etherpad_lite
+      - openstack-infra/puppet-exim
+      - openstack-infra/puppet-gerrit
+      - openstack-infra/puppet-gerritbot
       - openstack-infra/puppet-github
+      - openstack-infra/puppet-graphite
+      - openstack-infra/puppet-haveged
       - openstack-infra/puppet-httpd
+      - openstack-infra/puppet-iptables
+      - openstack-infra/puppet-jeepyb
       - openstack-infra/puppet-jenkins
+      - openstack-infra/puppet-kerberos
       - openstack-infra/puppet-kibana
+      - openstack-infra/puppet-lodgeit
+      - openstack-infra/puppet-log_processor
+      - openstack-infra/puppet-logrotate
+      - openstack-infra/puppet-logstash
+      - openstack-infra/puppet-mailman
+      - openstack-infra/puppet-mediawiki
+      - openstack-infra/puppet-meetbot
+      - openstack-infra/puppet-mysql_backup
+      - openstack-infra/puppet-nodepool
+      - openstack-infra/puppet-openafs
+      - openstack-infra/puppet-openstackid
+      - openstack-infra/puppet-packagekit
       - openstack-infra/puppet-pip
+      - openstack-infra/puppet-planet
+      - openstack-infra/puppet-project_config
+      - openstack-infra/puppet-redis
+      - openstack-infra/puppet-releasestatus
+      - openstack-infra/puppet-reviewday
+      - openstack-infra/puppet-simpleproxy
+      - openstack-infra/puppet-snmpd
+      - openstack-infra/puppet-ssh
+      - openstack-infra/puppet-ssl_cert_check
+      - openstack-infra/puppet-statusbot
       - openstack-infra/puppet-storyboard
+      - openstack-infra/puppet-subunit2sql
+      - openstack-infra/puppet-sudoers
+      - openstack-infra/puppet-tmpreaper
+      - openstack-infra/puppet-ulimit
+      - openstack-infra/puppet-unattended_upgrades
+      - openstack-infra/puppet-unbound
+      - openstack-infra/puppet-user
       - openstack-infra/puppet-vcsrepo
       - openstack-infra/puppet-vinz
       - openstack-infra/puppet-yum
@@ -52,6 +99,7 @@ openstack-infra:
       - openstack-infra/releasestatus
       - openstack-infra/reviewday
       - openstack-infra/reviewstats
+      - openstack-infra/shade
       - openstack-infra/statusbot
       - openstack-infra/storyboard
       - openstack-infra/storyboard-webclient
@@ -97,6 +145,7 @@ openstack-doc:
       - openstack/image-api
       - openstack/netconn-api
       - openstack/object-api
+      - openstack/openstackdocstheme
       - openstack/openstack-doc-tools
       - openstack/openstack-manuals
       - openstack/operations-guide
@@ -129,6 +178,7 @@ openstack-ceilometer:
       - openstack/ceilometer
       - openstack/ceilometer-specs
       - openstack/python-ceilometerclient
+      - openstack/ceilometermiddleware
       - stackforge/gnocchi
     branches:
       - master
@@ -182,6 +232,7 @@ tripleo:
       - openstack/tuskar-ui
       - stackforge/kolla
       - stackforge/prep-source-repos
+      - stackforge/puppet-tripleo
       - stackforge/tripleo-ansible
       - stackforge/windows-diskimage-builder
     branches:
@@ -318,6 +369,7 @@ puppet-openstack:
       - stackforge/puppet-cinder
       - stackforge/puppet-designate
       - stackforge/puppet-glance
+      - stackforge/puppet-gnocchi
       - stackforge/puppet-heat
       - stackforge/puppet-horizon
       - stackforge/puppet-ironic
@@ -333,6 +385,7 @@ puppet-openstack:
       - stackforge/puppet-sahara
       - stackforge/puppet-swift
       - stackforge/puppet-tempest
+      - stackforge/puppet-tripleo
       - stackforge/puppet-trove
       - stackforge/puppet-tuskar
       - stackforge/puppet-vswitch
@@ -347,7 +400,7 @@ openstack-chef:
       - change-merged
       - x-vrif-minus-2
     projects:
-      - stackforge/cookbook-ceph
+      - stackforge/cookbook-openstack-bare-metal
       - stackforge/cookbook-openstack-block-storage
       - stackforge/cookbook-openstack-client
       - stackforge/cookbook-openstack-common
@@ -444,6 +497,7 @@ openstack-ironic:
       - openstack/python-ironicclient
       - stackforge/pyghmi
       - stackforge/ironic-discoverd
+      - stackforge/proliantutils
     branches:
       - master
 
@@ -504,6 +558,17 @@ fuel-tracker:
       - stackforge/fuel-specs
       - stackforge/fuel-stats
       - stackforge/fuel-plugins
+      - stackforge/fuel-plugin-cinder-netapp
+      - stackforge/fuel-plugin-external-emc
+      - stackforge/fuel-plugin-external-glusterfs
+      - stackforge/fuel-plugin-external-nfs
+      - stackforge/fuel-plugin-external-zabbix
+      - stackforge/fuel-plugin-ha-fencing
+      - stackforge/fuel-plugin-neutron-fwaas
+      - stackforge/fuel-plugin-neutron-lbaas
+      - stackforge/fuel-plugin-neutron-vpnaas
+      - stackforge/fuel-qa
+      - stackforge/python-fuelclient
     branches:
       - master
 
@@ -727,6 +792,7 @@ openstack-keystone:
       - openstack/python-keystoneclient-federation
       - openstack/python-keystoneclient-kerberos
       - openstack/keystonemiddleware
+      - openstack/oslo.policy
     branches:
       - master
 
@@ -770,6 +836,7 @@ openstack-merges:
       - openstack/python-cinderclient
       - openstack/ceilometer
       - openstack/python-ceilometerclient
+      - openstack/ceilometermiddleware
       - openstack/heat
       - openstack/python-heatclient
       - openstack/heat-cfntools
@@ -789,11 +856,11 @@ openstack-merges:
       - openstack/oslo.i18n
       - openstack/oslo.messaging
       - openstack/oslo.middleware
+      - openstack/oslo.policy
       - openstack/oslo.rootwrap
       - openstack/oslo.serialization
       - openstack/oslo.sphinx
       - openstack/oslo.utils
-      - openstack/oslo.version
       - openstack/oslo.vmware
       - openstack-dev/cookiecutter
       - openstack-dev/hacking
@@ -824,15 +891,62 @@ openstack-merges:
       - openstack-infra/os-loganalyze
       - openstack-infra/project-config
       - openstack-infra/publications
+      - openstack-infra/puppet-accessbot
+      - openstack-infra/puppet-ansible
       - openstack-infra/puppet-apparmor
+      - openstack-infra/puppet-askbot
+      - openstack-infra/puppet-asterisk
+      - openstack-infra/puppet-bugdaystats
+      - openstack-infra/puppet-bup
+      - openstack-infra/puppet-cgit
       - openstack-infra/puppet-dashboard
+      - openstack-infra/puppet-drupal
+      - openstack-infra/puppet-elastic_recheck
       - openstack-infra/puppet-elasticsearch
+      - openstack-infra/puppet-etherpad_lite
+      - openstack-infra/puppet-exim
+      - openstack-infra/puppet-gerrit
+      - openstack-infra/puppet-gerritbot
       - openstack-infra/puppet-github
+      - openstack-infra/puppet-graphite
+      - openstack-infra/puppet-haveged
       - openstack-infra/puppet-httpd
+      - openstack-infra/puppet-iptables
+      - openstack-infra/puppet-jeepyb
       - openstack-infra/puppet-jenkins
+      - openstack-infra/puppet-kerberos
       - openstack-infra/puppet-kibana
+      - openstack-infra/puppet-lodgeit
+      - openstack-infra/puppet-log_processor
+      - openstack-infra/puppet-logrotate
+      - openstack-infra/puppet-logstash
+      - openstack-infra/puppet-mailman
+      - openstack-infra/puppet-mediawiki
+      - openstack-infra/puppet-meetbot
+      - openstack-infra/puppet-mysql_backup
+      - openstack-infra/puppet-nodepool
+      - openstack-infra/puppet-openafs
+      - openstack-infra/puppet-openstackid
+      - openstack-infra/puppet-packagekit
       - openstack-infra/puppet-pip
+      - openstack-infra/puppet-planet
+      - openstack-infra/puppet-project_config
+      - openstack-infra/puppet-redis
+      - openstack-infra/puppet-releasestatus
+      - openstack-infra/puppet-reviewday
+      - openstack-infra/puppet-simpleproxy
+      - openstack-infra/puppet-snmpd
+      - openstack-infra/puppet-ssh
+      - openstack-infra/puppet-ssl_cert_check
+      - openstack-infra/puppet-statusbot
       - openstack-infra/puppet-storyboard
+      - openstack-infra/puppet-subunit2sql
+      - openstack-infra/puppet-sudoers
+      - openstack-infra/puppet-tmpreaper
+      - openstack-infra/puppet-ulimit
+      - openstack-infra/puppet-unattended_upgrades
+      - openstack-infra/puppet-unbound
+      - openstack-infra/puppet-user
       - openstack-infra/puppet-vcsrepo
       - openstack-infra/puppet-yum
       - openstack-infra/puppet-zanata
@@ -890,6 +1004,7 @@ openstack-oslo:
       - x-vrif-minus-2
     projects:
       - openstack/cliff
+      - openstack/debtcollector
       - openstack/oslo-incubator
       - openstack/oslo-specs
       - openstack/oslo.concurrency
@@ -900,10 +1015,10 @@ openstack-oslo:
       - openstack/oslo.log
       - openstack/oslo.messaging
       - openstack/oslo.middleware
+      - openstack/oslo.policy
       - openstack/oslo.rootwrap
       - openstack/oslo.serialization
       - openstack/oslo.utils
-      - openstack/oslo.version
       - openstack/oslo.vmware
       - openstack/oslosphinx
       - openstack/oslotest
@@ -996,6 +1111,7 @@ congress:
       - stackforge/congress
       - stackforge/python-congressclient
       - stackforge/congress-specs
+      - stackforge/python-cloudfoundryclient
     branches:
       - master
 
@@ -1058,9 +1174,9 @@ openstack-ansible:
       - stackforge/os-ansible-deployment
     branches:
       - master
-      - stable/icehouse
-      - stable/juno
-      - proposed/juno
+      - icehouse
+      - juno
+      - kilo
 
 openstack-gbp:
     events:
@@ -1073,5 +1189,25 @@ openstack-gbp:
       - stackforge/group-based-policy-ui
       - stackforge/group-based-policy-automation
       - stackforge/python-group-based-policy-client
+    branches:
+      - master
+
+dragonflow:
+    events:
+      - patchset-created
+      - change-merged
+      - x-vrif-minus-2
+    projects:
+      - stackforge/dragonflow
+    branches:
+      - master
+
+openstack-vmtp:
+    events:
+      - patchset-created
+      - change-merged
+      - x-vrif-minus-2
+    projects:
+      - stackforge/vmtp
     branches:
       - master
