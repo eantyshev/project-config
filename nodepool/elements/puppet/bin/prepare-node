@@ -29,18 +29,21 @@ Service {
   status  => '/bin/true',
   restart => '/bin/true'
 }
-class {'openstack_project::single_use_slave':
+class {'prl_ci_project::single_use_slave':
   sudo => $SUDO,
   thin => $THIN,
   all_mysql_privs => $ALL_MYSQL_PRIVS,
   install_resolv_conf => false
 }
 EOF
+
+git clone https://github.com/eantyshev/prl_ci_project /opt/build_git/eantyshev/prl_ci_project
+
 # Puppet doesn't return nonzero if some things fail by default.
 # Use detailed exit codes to get that info and determine whether
 # the return code indicates failure.
 set +e
-puppet apply --detailed-exitcodes --modulepath=/opt/build_git/openstack-infra/system-config/modules:/etc/puppet/modules /tmp/local.pp
+puppet apply --detailed-exitcodes --modulepath=/opt/build_git/eantyshev:/opt/build_git/openstack-infra/system-config/modules:/etc/puppet/modules /tmp/local.pp
 PUPPET_RETURN=$?
 if [ "$PUPPET_RETURN" -eq 4 ] || [ "$PUPPET_RETURN" -eq 6 ] ; then
     exit $PUPPET_RETURN

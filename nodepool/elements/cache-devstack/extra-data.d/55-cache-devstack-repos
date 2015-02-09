@@ -142,7 +142,7 @@ def local_prep(distribution):
                 tokenize(fn, debs, distribution, comment='#')
             branch_data['debs'] = debs
 
-        if os.path.exists(os.path.join(TMP_MOUNT_PATH, 'usr/bin/rpm')):
+        if os.path.exists(os.path.join(TMP_MOUNT_PATH, 'etc/redhat-release')):
             rpms = []
             rpmdir = os.path.join(DEVSTACK, 'files', 'rpms')
             for fn in os.listdir(rpmdir):

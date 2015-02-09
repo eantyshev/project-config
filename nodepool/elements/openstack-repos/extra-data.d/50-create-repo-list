@@ -29,7 +29,12 @@ GIT_BASE=os.environ.get('GIT_BASE', 'git://git.openstack.org')
 
 
 def main():
-    projects = [f['project'] for f in yaml.load(urllib2.urlopen(URL))]
+    #projects = [f['project'] for f in yaml.load(urllib2.urlopen(URL))]
+    projects = ['openstack/nova', 'openstack/neutron', 'openstack/glance',
+            'openstack/horizon', 'openstack/requirements', 'openstack-dev/devstack',
+            'openstack/tempest', 'openstack/keystone',
+            'openstack-infra/zuul', 'openstack-infra/system-config']
+
     with open(PROJECTS_REPOS, 'w') as projects_list:
         for project in projects:
             args = dict(
