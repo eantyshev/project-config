@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eu
+set -o pipefail
+
+if [[ ! -d /etc/cloud/cloud.cfg.d ]]; then
+    mkdir -p /etc/cloud/cloud.cfg.d
+fi
+touch /etc/cloud/cloud.cfg.d/10_etc_hosts.cfg

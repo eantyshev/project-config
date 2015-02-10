@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eu
+set -o pipefail
+
+echo "CentOS release 6.5 (Final)" > /etc/redhat-release
+
+sed -i 's/ip_conntrack_disable_ve0=1/ip_conntrack_disable_ve0=0/' /etc/modprobe.d/parallels.conf
