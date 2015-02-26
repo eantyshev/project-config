@@ -1,0 +1,31 @@
+#!/bin/bash
+set -ux
+set -o pipefail
+
+[ -n $TARGET_ROOT ]
+
+REPO=$TARGET_ROOT/etc/yum.repos.d/dib-ci-pcs6.repo
+
+cat - > REPO <<EOF
+
+# repositories with Parallels Software should start with 'parallels-' prefix (for PVA)
+[parallels-cloud-server-dib]
+name=Parallels Cloud Server Base
+mirrorlist=http://repo.eng.sw.ru/mirrors/psbm/6.0/update9/validated
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/PARALLELS_GPG_KEY
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CloudLinux
+
+[parallels-cloud-server-updates]
+name=Parallels Cloud Server Updates
+baseurl=http://s01.parallels.com/Sumer-Bare-Metal/Sources-6-update9
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/PARALLELS_GPG_KEY
+
+EOF
+
+yum update -y --disablerepo=* --enablerepo=parallels-cloud-server-dib
+
+
