@@ -1,0 +1,13 @@
+#!/bin/bash
+set -ux
+set -o pipefail
+
+[ -n $TARGET_ROOT ]
+
+pushd .
+cd $TARGET_ROOT/tmp
+git clone https://github.com/flegmatik/linux-rootfs-resize.git
+cd linux-rootfs-resize
+./install
+popd
+
