@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ux
+set -uex
 set -o pipefail
 
 REPO=/etc/yum.repos.d/dib-ci-pcs6.repo
