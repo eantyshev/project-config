@@ -2,7 +2,7 @@
 set -xe
 
 cd /tmp
-git clone https://github.com/flegmatik/linux-rootfs-resize.git
+[ -d linux-rootfs-resize ] || git clone https://github.com/flegmatik/linux-rootfs-resize.git
 cd linux-rootfs-resize
 ./install
 
