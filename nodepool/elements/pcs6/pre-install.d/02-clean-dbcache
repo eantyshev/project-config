@@ -1,0 +1,6 @@
+#!/bin/bash
+set -uex
+set -o pipefail
+
+yum clean all --disablerepo=* --enablerepo=parallels-cloud-server
+

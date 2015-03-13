@@ -21,10 +21,15 @@ EOF
 
 yum update -y --disablerepo=* --enablerepo=parallels-cloud-server
 
+# before installing linux-rootfs-resize we need to leave only one kernel in /boot
+ls -1v /boot/vmlinuz-* | head -1 | xargs rm -f
+ls -1v /boot/initramfs-* | head -1 | xargs rm -f
+ls -1v /boot/vmlinuz-*-mod | head -1 | xargs rm -f
+ls -1v /boot/initramfs-*-mod | head -1 | xargs rm -f
+
 cd /tmp
 [ -d linux-rootfs-resize ] || git clone https://github.com/flegmatik/linux-rootfs-resize.git
 cd linux-rootfs-resize
 ./install
 
-cat /boot/grub/grub.conf
-
+ls -1 /boot
