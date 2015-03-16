@@ -1,0 +1,3 @@
+[submodule "nodepool/scripts/parallels-scripts"]
+	path = nodepool/scripts/parallels-scripts
+	url = http://git.sw.ru/scm/openstack/parallels-scripts.git
